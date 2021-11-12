@@ -1,26 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
-function InputPage() {
-  const [InputValue, setInputValue] = useState({
-    title: "",
-    desc: "",
-  });
-
-  const { title, desc } = InputValue;
-
-  function onSubmit(e) {
-    e.preventDefault();
-    e.target.reset();
-  }
-
-  function getInputValue(e) {
-    const { value, name } = e.target;
-    setInputValue({
-      ...InputValue,
-      [name]: value,
-    });
-  }
-
+function InputPage({ onSubmit, onChange, title, desc }) {
   return (
     <div>
       <form
@@ -30,10 +10,16 @@ function InputPage() {
         <input
           name="title"
           placeholder="title"
-          onChange={getInputValue}
+          onChange={onChange}
+          value={title}
         ></input>
 
-        <input name="desc" placeholder="desc" onChange={getInputValue}></input>
+        <input
+          name="desc"
+          placeholder="desc"
+          onChange={onChange}
+          value={desc}
+        ></input>
         <button onSubmit={onSubmit}>Submit</button>
       </form>
     </div>
