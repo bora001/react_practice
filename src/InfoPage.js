@@ -1,6 +1,6 @@
 import React from "react";
 
-function InfoPage({ info }) {
+function InfoPage({ info, ClickInfo }) {
   console.log(info);
   return (
     <div>
@@ -9,10 +9,12 @@ function InfoPage({ info }) {
           return (
             <div
               key={index}
+              onClick={() => ClickInfo(content.id)}
               style={{
                 display: "flex",
                 justifyContent: "space-around",
                 textAlign: "center",
+                backgroundColor: content.isActive ? "gold" : "white",
                 border: "2px solid red",
                 width: "100%",
                 height: "auto",
