@@ -42,7 +42,11 @@ function App() {
     console.log("click", id);
     console.log(Info.filter((info) => info.id == id));
     setInfo(
-      Info.map((info) => (info.id == id ? { ...info, isActive: true } : info))
+      Info.map((info) =>
+        info.id == id
+          ? { ...info, isActive: true }
+          : { ...info, isActive: false }
+      )
     );
   };
 
