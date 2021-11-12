@@ -8,13 +8,25 @@ function App() {
     title: "",
     desc: "",
   });
+  const [Info, setInfo] = useState([
+    { id: 0, title: "title", desc: "desc" },
+    {
+      id: 1,
+      title: "test1",
+      desc: "test1",
+    },
+  ]);
+
+  const [currentId, setcurrentId] = useState(Info.length);
 
   const { title, desc } = InputValue;
 
   const onSubmit = (e) => {
+    let event = Object.assign({}, e);
     e.preventDefault();
     e.target.reset();
-    console.log(InputValue);
+    setInfo([...Info, { id: currentId, ...InputValue }]);
+    setcurrentId(currentId + 1);
   };
 
   const onChange = (e) => {
@@ -25,15 +37,6 @@ function App() {
     });
   };
 
-  const [Info, setInfo] = useState([
-    { id: 0, title: "title", desc: "desc" },
-    {
-      id: 1,
-      title: "test1",
-      desc: "test1",
-    },
-  ]);
-
   return (
     <div>
       <InputPage
@@ -43,11 +46,6 @@ function App() {
         onChange={onChange}
       />
       <hr />
-      <div style={{ display: "flex" }}>
-        <p>index</p>
-        <p>title</p>
-        <p>desc</p>
-      </div>
       <InfoPage info={Info} />
     </div>
   );

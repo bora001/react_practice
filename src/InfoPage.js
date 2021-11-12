@@ -7,10 +7,44 @@ function InfoPage({ info }) {
       {info &&
         info.map((content, index) => {
           return (
-            <div style={{ display: "flex", justifyContent: "space-around" }}>
-              <p>{content.id}</p>
-              <p>{content.title}</p>
-              <p>{content.desc}</p>
+            <div
+              key={index}
+              style={{
+                display: "flex",
+                justifyContent: "space-around",
+                textAlign: "center",
+                border: "2px solid red",
+                width: "100%",
+                height: "auto",
+              }}
+            >
+              <p
+                style={{
+                  width: "30%",
+                  height: "100%",
+                  border: "1px solid blue",
+                }}
+              >
+                {content.id}
+              </p>
+              <p
+                style={{
+                  width: "30%",
+                  height: "100%",
+                  border: "1px solid blue",
+                }}
+              >
+                {content.title}
+              </p>
+              <p
+                style={{
+                  width: "30%",
+                  height: "100%",
+                  border: "1px solid blue",
+                }}
+              >
+                {content.desc}
+              </p>
             </div>
           );
         })}
