@@ -18,16 +18,14 @@ function App() {
     },
   ]);
 
-  const [currentId, setcurrentId] = useState(Info.length);
-
   const { title, desc } = InputValue;
 
   const onSubmit = (e) => {
-    let event = Object.assign({}, e);
+    // let event = Object.assign({}, e);
+    let currentId = Info.length;
     e.preventDefault();
-    e.target.reset();
+    // e.target.reset();
     setInfo([...Info, { id: currentId, ...InputValue, isActive: false }]);
-    setcurrentId(currentId + 1);
   };
 
   const onChange = (e) => {
@@ -39,8 +37,6 @@ function App() {
   };
 
   const ClickInfo = (id) => {
-    console.log("click", id);
-    console.log(Info.filter((info) => info.id == id));
     setInfo(
       Info.map((info) =>
         info.id == id
@@ -48,6 +44,12 @@ function App() {
           : { ...info, isActive: false }
       )
     );
+  };
+
+  const InfoDelete = (id) => {
+    let newInfo = Info.filter((info) => info.id !== id);
+    let newArr = newInfo.map((info, index) => ({ ...info, ["id"]: index }));
+    setInfo(newArr);
   };
 
   return (
@@ -59,7 +61,7 @@ function App() {
         onChange={onChange}
       />
       <hr />
-      <InfoPage info={Info} ClickInfo={ClickInfo} />
+      <InfoPage info={Info} ClickInfo={ClickInfo} InfoDelete={InfoDelete} />
     </div>
   );
 }
