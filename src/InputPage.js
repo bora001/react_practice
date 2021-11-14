@@ -3,10 +3,7 @@ import React from "react";
 function InputPage({ onSubmit, onChange, title, desc, onCreate }) {
   return (
     <div>
-      <form
-        onSubmit={onSubmit}
-        style={{ display: "flex", flexDirection: "column", width: "200px" }}
-      >
+      <form className="submit_form" onSubmit={onSubmit}>
         <input
           name="title"
           placeholder="title"

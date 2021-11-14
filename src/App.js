@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react";
-
+import "./App.css";
 import InputPage from "./InputPage";
 import InfoPage from "./InfoPage";
 
@@ -31,7 +31,7 @@ function App() {
 
   function countArticle(Info) {
     console.log("count articles....");
-    return Info.length - 1;
+    return Info.length;
   }
 
   const count = useMemo(() => countArticle(Info), [Info]);
@@ -42,11 +42,13 @@ function App() {
   };
 
   const onSubmit = (e) => {
-    // let event = Object.assign({}, e);
     let currentId = Info.length;
     e.preventDefault();
-    // e.target.reset();
     setInfo([...Info, { id: currentId, ...InputValue, isActive: false }]);
+    setInputValue({
+      title: "",
+      desc: "",
+    });
   };
 
   const onChange = (e) => {
@@ -103,32 +105,35 @@ function App() {
   };
 
   return (
-    <div>
-      {Create && Create ? (
-        <InputPage
-          title={title}
-          desc={desc}
-          onSubmit={onSubmit}
-          onChange={onChange}
-          onCreate={onCreate}
-        />
-      ) : (
-        <button onClick={onCreate}>Create Article</button>
-      )}
-      <div>
-        <p>current Article : {count}</p>
-      </div>
+    <div className="app_cnt">
+      <div className="app_inner">
+        {Create && Create ? (
+          <InputPage
+            title={title}
+            desc={desc}
+            onSubmit={onSubmit}
+            onChange={onChange}
+            onCreate={onCreate}
+          />
+        ) : (
+          <div className="intro_box">
+            <h2>Welcome! Make your article here</h2>
+            <button onClick={onCreate}>Create</button>
+          </div>
+        )}
+        <p>current article : {count}</p>
 
-      <hr />
-      <InfoPage
-        info={Info}
-        ModifyTitle={ModifyTitle}
-        ModifyDesc={ModifyDesc}
-        ClickInfo={ClickInfo}
-        InfoModify={InfoModify}
-        InfoDelete={InfoDelete}
-        modifyChange={modifyChange}
-      />
+        <hr />
+        <InfoPage
+          info={Info}
+          ModifyTitle={ModifyTitle}
+          ModifyDesc={ModifyDesc}
+          ClickInfo={ClickInfo}
+          InfoModify={InfoModify}
+          InfoDelete={InfoDelete}
+          modifyChange={modifyChange}
+        />
+      </div>
     </div>
   );
 }

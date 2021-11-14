@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=M+PLUS+1+Code&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap");
+button {
+  padding: 10px;
+  background-color: rgb(185, 233, 55, 0.8);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  letter-spacing: 1px;
+  font-family: "Gothic A1", sans-serif;
+}
+
+button:hover {
+  background-color: rgb(66, 196, 34, 0.7);
+}
+
+.app_cnt {
+  width: 98vw;
+  height: 98vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "M PLUS 1 Code", sans-serif;
+}
+
+.app_inner {
+  width: 600px;
+  font-size: 22px;
+}
+/* intro_box */
+.intro_box button {
+  float: right;
+}
+
+/* inputPage */
+
+.submit_form {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  background-color: rgba(128, 255, 0, 0.24);
+  justify-content: space-around;
+  align-items: center;
+}
+
+.submit_form input {
+  width: 30%;
+  padding: 10px;
+  font-size: 17px;
+}
+
+/* InfoPage */
+.info_box {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  width: 100%;
+  height: auto;
+}
+
+.modify_box {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+}
+
+.modify_box .info_p {
+  width: 30%;
+  text-align: center;
+  height: 100%;
+}
+
+.modify_box input {
+  width: 28%;
+  height: 50%;
+  padding: 10px;
+  font-size: 17px;
+}
+
+.btn_box {
+  width: 170px;
+  justify-content: space-between;
+  height: auto;
+  display: flex;
+  margin: 15px auto;
+}
+
+.btn_box button {
+  background-color: rgb(185, 233, 55, 0.7);
+}

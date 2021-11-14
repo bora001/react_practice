@@ -14,100 +14,41 @@ function InfoPage({
       {info &&
         info.map((content, index) => {
           return (
-            <div>
+            <div key={index}>
               {content.isModify ? (
-                <div
-                  key={`modify` + `${index}`}
-                  className="modify_box"
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-around",
-                    alignItems: "center",
-                    textAlign: "center",
-                    backgroundColor: "gray",
-                    width: "100%",
-                    height: "auto",
-                  }}
-                >
-                  <p
-                    style={{
-                      width: "30%",
-                      height: "100%",
-                      border: "1px solid blue",
-                    }}
-                  >
-                    {content.id}
-                  </p>
+                <div className="modify_box">
+                  <p className="info_p">{content.id}</p>
                   <input
                     name="title"
                     placeholder="title"
                     value={ModifyTitle}
                     onChange={modifyChange}
-                    style={{ width: "28%", height: "50%" }}
                   />
                   <input
                     name="desc"
                     placeholder="desc"
                     value={ModifyDesc}
                     onChange={modifyChange}
-                    style={{ width: "28%", height: "50%" }}
                   />
                 </div>
               ) : (
-                <div key={index} onClick={() => ClickInfo(content.id)}>
+                <div onClick={() => ClickInfo(content.id)}>
                   <div
                     className="info_box"
                     style={{
-                      display: "flex",
-                      justifyContent: "space-around",
-                      textAlign: "center",
-                      backgroundColor: content.isActive ? "gold" : "white",
-                      border: "2px solid red",
-                      width: "100%",
-                      height: "auto",
+                      backgroundColor: content.isActive
+                        ? "rgb(185, 233, 55, 0.4)"
+                        : "rgb(185, 233, 55, 0.1)",
                     }}
                   >
-                    <p
-                      style={{
-                        width: "30%",
-                        height: "100%",
-                        border: "1px solid blue",
-                      }}
-                    >
-                      {content.id}
-                    </p>
-                    <p
-                      style={{
-                        width: "30%",
-                        height: "100%",
-                        border: "1px solid blue",
-                      }}
-                    >
-                      {content.title}
-                    </p>
-                    <p
-                      style={{
-                        width: "30%",
-                        height: "100%",
-                        border: "1px solid blue",
-                      }}
-                    >
-                      {content.desc}
-                    </p>
+                    <p className="info_p">{content.id}</p>
+                    <p className="info_p">{content.title}</p>
+                    <p className="info_p">{content.desc}</p>
                   </div>
                 </div>
               )}
               {content.isActive ? (
-                <div
-                  className="btn_box"
-                  key={`btn` + `${index}`}
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-around",
-                    margin: "20px auto",
-                    width: "20%",
-                  }}
-                >
+                <div className="btn_box">
                   <button onClick={() => InfoModify(content.id)}>Modify</button>
                   <button onClick={() => InfoDelete(content.id)}>Delete</button>
                 </div>
