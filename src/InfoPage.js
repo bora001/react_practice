@@ -8,6 +8,7 @@ function InfoPage({
   modifyChange,
   ModifyTitle,
   ModifyDesc,
+  unModify,
 }) {
   return (
     <div>
@@ -51,6 +52,7 @@ function InfoPage({
                 <div className="btn_box">
                   <button onClick={() => InfoModify(content.id)}>Modify</button>
                   <button onClick={() => InfoDelete(content.id)}>Delete</button>
+                  <button onClick={unModify}>Cancel</button>
                 </div>
               ) : (
                 ""

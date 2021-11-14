@@ -59,6 +59,16 @@ button:hover {
   height: auto;
 }
 
+.info_box .info_p {
+  width: 100%;
+  display: block;
+  padding: 5px;
+}
+
+.info_box .info_p:last-child {
+  border-right: none;
+}
+
 .modify_box {
   display: flex;
   justify-content: space-around;
@@ -80,7 +90,7 @@ button:hover {
 }
 
 .btn_box {
-  width: 170px;
+  width: 250px;
   justify-content: space-between;
   height: auto;
   display: flex;

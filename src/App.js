@@ -78,6 +78,13 @@ function App() {
     );
   };
 
+  const unModify = (e) => {
+    e.preventDefault();
+    setInfo(
+      Info.map((info) => ({ ...info, isActive: false, isModify: false }))
+    );
+  };
+
   const InfoDelete = (id) => {
     let newInfo = Info.filter((info) => info.id !== id);
     let newArr = newInfo.map((info, index) => ({ ...info, ["id"]: index + 1 }));
@@ -138,6 +145,7 @@ function App() {
           InfoModify={InfoModify}
           InfoDelete={InfoDelete}
           modifyChange={modifyChange}
+          unModify={unModify}
         />
       </div>
     </div>
