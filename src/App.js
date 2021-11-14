@@ -29,16 +29,19 @@ function App() {
   const { title, desc } = InputValue;
   const { ModifyTitle, ModifyDesc } = ModifyValue;
 
-  function countArticle(Info) {
-    console.log("count articles....");
+  function countMemo(Info) {
+    console.log("count Memos....");
     return Info.length;
   }
 
-  const count = useMemo(() => countArticle(Info), [Info]);
+  const count = useMemo(() => countMemo(Info), [Info]);
 
   const onCreate = (e) => {
     e.preventDefault();
     setCreate(!Create);
+    setInfo(
+      Info.map((info) => ({ ...info, isActive: false, isModify: false }))
+    );
   };
 
   const onSubmit = (e) => {
@@ -130,13 +133,18 @@ function App() {
           />
         ) : (
           <div className="intro_box">
-            <h2>Welcome! Make your article here</h2>
+            <h2>Welcome! Write your memo 📝</h2>
             <button onClick={onCreate}>Create</button>
           </div>
         )}
-        <p>current article : {count}</p>
+        <p>current Memo : {count}</p>
 
         <hr />
+        {count == 0 ? (
+          <p style={{ textAlign: "center" }}>There is no memo </p>
+        ) : (
+          ""
+        )}
         <InfoPage
           info={Info}
           ModifyTitle={ModifyTitle}
