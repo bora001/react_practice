@@ -93,6 +93,11 @@ function App() {
           info.id == id ? { ...ModifyValue, id } : { ...info }
         )
       );
+      setModifyValue({
+        title: "",
+        desc: "",
+      });
+      // setInfo({ title: "", desc: "" });
     } else {
       //first modify
       setInfo(
