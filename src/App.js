@@ -16,9 +16,9 @@ function App() {
   });
 
   const [Info, setInfo] = useState([
-    { id: 0, title: "title", desc: "desc", isActive: false, isModify: false },
+    { id: 1, title: "title", desc: "desc", isActive: false, isModify: false },
     {
-      id: 1,
+      id: 2,
       title: "test1",
       desc: "test1",
       isActive: false,
@@ -44,7 +44,7 @@ function App() {
   const onSubmit = (e) => {
     let currentId = Info.length;
     e.preventDefault();
-    setInfo([...Info, { id: currentId, ...InputValue, isActive: false }]);
+    setInfo([...Info, { id: currentId + 1, ...InputValue, isActive: false }]);
     setInputValue({
       title: "",
       desc: "",
@@ -80,12 +80,13 @@ function App() {
 
   const InfoDelete = (id) => {
     let newInfo = Info.filter((info) => info.id !== id);
-    let newArr = newInfo.map((info, index) => ({ ...info, ["id"]: index }));
+    let newArr = newInfo.map((info, index) => ({ ...info, ["id"]: index + 1 }));
     setInfo(newArr);
   };
 
   const InfoModify = (id) => {
-    if (Info[id].isModify) {
+    let Id = id - 1;
+    if (Info[Id].isModify) {
       // already modify
       setInfo(
         Info.map((info) =>
