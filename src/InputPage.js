@@ -1,6 +1,6 @@
 import React from "react";
 
-function InputPage({ onSubmit, onChange, title, desc }) {
+function InputPage({ onSubmit, onChange, title, desc, onCreate }) {
   return (
     <div>
       <form
@@ -21,6 +21,7 @@ function InputPage({ onSubmit, onChange, title, desc }) {
           value={desc}
         />
         <button onSubmit={onSubmit}>Submit</button>
+        <button onClick={onCreate}>Cancel</button>
       </form>
     </div>
   );

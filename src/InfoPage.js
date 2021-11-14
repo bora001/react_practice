@@ -100,6 +100,7 @@ function InfoPage({
               {content.isActive ? (
                 <div
                   className="btn_box"
+                  key={`btn` + `${index}`}
                   style={{
                     display: "flex",
                     justifyContent: "space-around",

@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 
 import InputPage from "./InputPage";
 import InfoPage from "./InfoPage";
 
 function App() {
+  const [Create, setCreate] = useState(false);
   const [InputValue, setInputValue] = useState({
     title: "",
     desc: "",
   });
+
   const [ModifyValue, setModifyValue] = useState({
     title: "",
     desc: "",
@@ -26,6 +28,18 @@ function App() {
 
   const { title, desc } = InputValue;
   const { ModifyTitle, ModifyDesc } = ModifyValue;
+
+  function countArticle(Info) {
+    console.log("count articles....");
+    return Info.length - 1;
+  }
+
+  const count = useMemo(() => countArticle(Info), [Info]);
+
+  const onCreate = (e) => {
+    e.preventDefault();
+    setCreate(!Create);
+  };
 
   const onSubmit = (e) => {
     // let event = Object.assign({}, e);
@@ -71,20 +85,13 @@ function App() {
   const InfoModify = (id) => {
     if (Info[id].isModify) {
       // already modify
-      // let modifyInfo = Info.filter((info) => info.id == id);
-      // console.log(modifyInfo);
-      console.log("modifyInfo", ModifyValue);
       setInfo(
         Info.map((info) =>
           info.id == id ? { ...ModifyValue, id } : { ...info }
         )
       );
-
-      console.log(Info);
-      // setInfo([...Info, { id: currentId, ...InputValue, isActive: false }]);
-
-      console.log("already modify");
     } else {
+      //first modify
       setInfo(
         Info.map((info) =>
           info.id == id
@@ -92,18 +99,26 @@ function App() {
             : { ...info, isModify: false }
         )
       );
-      console.log("first modify");
     }
   };
 
   return (
     <div>
-      <InputPage
-        title={title}
-        desc={desc}
-        onSubmit={onSubmit}
-        onChange={onChange}
-      />
+      {Create && Create ? (
+        <InputPage
+          title={title}
+          desc={desc}
+          onSubmit={onSubmit}
+          onChange={onChange}
+          onCreate={onCreate}
+        />
+      ) : (
+        <button onClick={onCreate}>Create Article</button>
+      )}
+      <div>
+        <p>current Article : {count}</p>
+      </div>
+
       <hr />
       <InfoPage
         info={Info}
