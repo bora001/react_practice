@@ -12,14 +12,14 @@ function InputPage({ onSubmit, onChange, title, desc }) {
           placeholder="title"
           onChange={onChange}
           value={title}
-        ></input>
+        />
 
         <input
           name="desc"
           placeholder="desc"
           onChange={onChange}
           value={desc}
-        ></input>
+        />
         <button onSubmit={onSubmit}>Submit</button>
       </form>
     </div>
